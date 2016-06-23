@@ -1,0 +1,4 @@
+akono_site:
+    resource: "@AkonoSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,25 @@
+akono_site_homepage:
+    path:     /
+    defaults: { _controller: AkonoSiteBundle:Page:index }
+    requirements:
+      methods: GET
+akono_site_services:
+    path:     /services
+    defaults: { _controller: AkonoSiteBundle:Page:services }
+    requirements:
+      methods: GET
+akono_site_portfolio:
+    path:     /portfolio
+    defaults: { _controller: AkonoSiteBundle:Page:portfolio }
+    requirements:
+      methods: GET
+akono_site_articles:
+    path:     /articles
+    defaults: { _controller: AkonoSiteBundle:Page:articles }
+    requirements:
+      methods: GET
+akono_site_contact:
+    path:     /contact
+    defaults: { _controller: AkonoSiteBundle:Page:contact }
+    requirements:
+      methods: GET

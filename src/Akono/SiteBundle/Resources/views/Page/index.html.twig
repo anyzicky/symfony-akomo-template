@@ -1,0 +1,55 @@
+{% extends 'AkonoSiteBundle::layout.html.twig' %}
+
+{% block body %}
+    <div id="featured-section">
+        <h2>We design original and effective online experiences</h2>
+        <div id="circles">
+            {% set i = 0 %}
+            {% for blob in blobs %}
+                {% if(i == 0) %}
+                    <img class="first" src="images/{{ blob.image }}" title="{{ blob.title }}" alt="{{ blob.title }}"/>
+                {% else %}
+                    <img class="" src="images/{{ blob.image }}" alt="{{ blob.title }}" title="{{ blob.title }}"/>
+                {% endif %}
+                {% set i = i + 1 %}
+            {% endfor %}
+        </div>
+        <!--end circles-->
+        <div id="image-slider">
+            <ul id="mycarousel" class="jcarousel-skin-tango">
+                <li class="first"><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li class="first"><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li class="first"><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+            </ul>
+        </div>
+        <!--end image-slider-->
+    </div>
+    <!--end featured-section-->
+    <div id="frontpage-main">
+        <div id="frontpage-content">
+            <h3>Why Work With Akono?</h3>
+            <p>You’ll not regret getting in touch with us about your new project. Below are some of the benefits.</p>
+            <ul class="blue-bullets">
+                <li>Over 15 Years Real World Experience</li>
+                <li>Voted No. 1 Design Studio In The World</li>
+                <li>Support And Guidance At Every Step</li>
+                <li>A Great Solution That You&#8217;ll Be Happy With</li>
+            </ul>
+        </div>
+        <!--end frontpage-content-->
+        <div id="frontpage-sidebar">
+            <h3>Latest Article</h3>
+            <a class="blog-title" href="#">Top Tips For Hiring A Design Agency</a>
+            <p class="meta">1st May 2011 / <a href="#">No Comments &#187;</a></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+            <a class="read-more" href="#">Read More &raquo;</a> </div>
+        <!--end frontpage-sidebar-->
+    </div>
+    <!--end frontpage-main-->
+{% endblock %}
