@@ -4,24 +4,15 @@
     <div class="page-headline">Portfolio</div>
     <div id="main">
         <div id="porfolio-content">
-            <div class="portfolio-item first"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item first"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item first"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
-            <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-            <!--end portfolio-item-->
+            {% set i = 0 %}
+            {% for slide in slides %}
+                <div class="portfolio-item {% if(i % 3 == 0) %}first{% endif %}">
+                    <a href="#"><img width="280" height="190" src="images/{{ slide.image }}" alt="{{ slide.title }}" /></a>
+                </div>
+                <!--end portfolio-item-->
+                {% set i = i + 1 %}
+            {% endfor %}
+
         </div>
         <!--portfolio-content-->
     </div>

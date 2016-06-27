@@ -13,8 +13,11 @@ class PageController extends Controller
         $blobs = $em->getRepository('AkonoSiteBundle:Blob')
                     ->getBlobs(4);
 
+        $slides = $em->getRepository('AkonoSiteBundle:Slider')->findAll();
+
         return $this->render('AkonoSiteBundle:Page:index.html.twig', array(
-            'blobs' => $blobs
+            'blobs'  => $blobs,
+            'slides' => $slides
         ));
     }
     
@@ -25,7 +28,13 @@ class PageController extends Controller
 
     public function portfolioAction()
     {
-        return $this->render('AkonoSiteBundle:Page:portfolio.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $slides = $em->getRepository('AkonoSiteBundle:Slider')->findAll();
+
+        return $this->render('AkonoSiteBundle:Page:portfolio.html.twig', array(
+            'slides' => $slides
+        ));
     }
 
     public function articlesAction()

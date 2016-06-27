@@ -17,15 +17,13 @@
         <!--end circles-->
         <div id="image-slider">
             <ul id="mycarousel" class="jcarousel-skin-tango">
-                <li class="first"><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li class="first"><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li class="first"><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
-                <li><a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a></li>
+                {% set j = 0 %}
+                {% for slide in slides %}
+                    <li {% if(j % 3 == 0) %}class="first" {% endif %}>
+                        <a href="#"><img width="280" height="190" src="images/{{ slide.image }}" alt="{{ slide.title }}" /></a>
+                    </li>
+                    {% set j = j + 1 %}
+                {% endfor %}
             </ul>
         </div>
         <!--end image-slider-->
