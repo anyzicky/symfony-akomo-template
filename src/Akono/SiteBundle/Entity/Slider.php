@@ -5,8 +5,8 @@ namespace Akono\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="`slider`")
+ * @ORM\Entity(repositoryClass="Akono\SiteBundle\Entity\Repository\PortfolioRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Slider
@@ -27,6 +27,21 @@ class Slider
      * @ORM\Column(type="string")
      */
     protected $image;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $startDate;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $endDate;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $body;
 
     /**
      * @return mixed
@@ -77,4 +92,33 @@ class Slider
     }
 
 
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate($date)
+    {
+        $this->startDate = $date;
+    }
+
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate($date)
+    {
+        $this->endDate = $date;
+    }
+
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    public function setBody($text)
+    {
+        $this->body = $text;
+    }
 }

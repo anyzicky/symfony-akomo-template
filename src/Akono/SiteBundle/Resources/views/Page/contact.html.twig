@@ -1,5 +1,7 @@
 {% extends 'AkonoSiteBundle::layout.html.twig' %}
 
+{% block title %}Contact{% endblock %}
+
 {% block body %}
     <div class="page-headline">Contact Us</div>
     <div id="main">
@@ -15,19 +17,19 @@
         </div>
         <!--end contact-details-->
         <div id="contact-form-container">
-            <form id="contact-form" method="post" action="#">
-                <fieldset>
-                    <input id="form_name" type="text" name="name" value="Name" onFocus="if(this.value=='Name'){this.value=''};" onBlur="if(this.value==''){this.value='Name'};" />
-                    <input id="form_email" type="text" name="email" value="Email" onFocus="if(this.value=='Email'){this.value=''};" onBlur="if(this.value==''){this.value='Email'};" />
-                    <input id="form_subject" type="text" name="subject" value="Subject" onFocus="if(this.value=='Subject'){this.value=''};" onBlur="if(this.value==''){this.value='Subject'};" />
-                    <textarea id="form_message" rows="10" cols="40" name="message"></textarea>
-                    <input id="form_submit" class="submit" type="submit" name="submit" value="Submit &raquo;" />
-                    <div class="hide">
-                        <label>Do not fill out this field</label>
-                        <input name="spam_check" type="text" value="" />
-                    </div>
-                </fieldset>
-            </form>
+
+            {{ form_start(form, {'action': path('akono_site_contact'), 'method': 'POST', 'attr': {'id': 'contact-form'}}) }}
+                {{ form_errors(form) }}
+
+                {{ form_widget(form.name, {'attr' : {'id': 'form_name', 'placeholder': 'Name'}}) }}
+                {{ form_widget(form.email, {'attr' : {'id': 'form_email', 'placeholder': 'E-mail'}}) }}
+                {{ form_widget(form.subject, {'attr' : {'id': 'form_subject', 'placeholder': 'Subject'}}) }}
+                {{ form_widget(form.message, {'attr' : {'id': 'form_message', 'placeholder': 'Message'}}) }}
+
+                {{ form_rest(form) }}
+
+            <input id="form_submit" class="submit" type="submit" name="submit" value="Submit &raquo;" />
+
         </div>
         <!--end contact-form-container-->
     </div>

@@ -1,0 +1,20 @@
+{% extends '@AkonoSite/layout.html.twig' %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block body %}
+    <div class="page-headline">Project -- [{{ project.title }}]</div>
+    <div id="main">
+        <div id="project-content">
+            <div id="project-header">
+                <h3 class="title">Project: <span>{{ project.title }}</span></h3>
+                <h3>Start Date: <span>{{ project.startDate|date('d.m.Y') }}</span></h3>
+                <h3>Completion Date: <span>{{ project.endDate|date('d.m.Y') }}</span></h3>
+            </div>
+            <!--end project-header-->
+            {{ project.body }}
+        <!--end project-content-->
+        <div id="project-image-large"> <img src="images/{{ project.image }}" /> </div>
+        <!--end project-image-large-->
+    </div>
+{% endblock %}

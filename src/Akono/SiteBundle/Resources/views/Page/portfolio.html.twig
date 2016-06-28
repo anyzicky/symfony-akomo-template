@@ -7,7 +7,7 @@
             {% set i = 0 %}
             {% for slide in slides %}
                 <div class="portfolio-item {% if(i % 3 == 0) %}first{% endif %}">
-                    <a href="#"><img width="280" height="190" src="images/{{ slide.image }}" alt="{{ slide.title }}" /></a>
+                    <a href="{{ path('akono_site_portfolio') }}/{{ slide.id }}"><img width="280" height="190" src="images/{{ slide.image }}" alt="{{ slide.title }}" /></a>
                 </div>
                 <!--end portfolio-item-->
                 {% set i = i + 1 %}

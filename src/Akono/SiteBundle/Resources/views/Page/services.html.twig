@@ -6,18 +6,12 @@
         <div id="content">
             <div class="post">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem feugiat augue, id tristique lacus est ac purus. </p>
-                <h3>Web Design &amp; Development</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem feugiat augue, id tristique lacus est ac purus. </p>
-                <p><a>More Details &raquo;</a></p>
-                <h3>Search Engine Optimization</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem feugiat augue, id tristique lacus est ac purus. </p>
-                <p><a>More Details &raquo;</a></p>
-                <h3>Online Marketing Campaigns</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem feugiat augue, id tristique lacus est ac purus. </p>
-                <p><a>More Details &raquo;</a></p>
-                <h3>Logo Design &amp; Brand Development</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem feugiat augue, id tristique lacus est ac purus. </p>
-                <p><a>More Details &raquo;</a></p>
+
+                {% for service in services %}
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.body }}</p>
+                    <p><a href="{{ path('akono_site_services') }}/{{ service.id }}">More Details &raquo;</a></p>
+                {% endfor %}
             </div>
         </div>
         <!--end content-->
@@ -25,16 +19,20 @@
             <div id="hire">
                 <h3 class="sidebar-title">Want To Hire Akona?</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a class="sidebar-button" href="contact.html">Contact Us &raquo;</a> </div>
+                <a class="sidebar-button" href="{{ path('akono_site_contact') }}">Contact Us &raquo;</a> </div>
             <!--end hire-->
             <div id="recent-projects">
                 <h3>Recent Projects</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-                <!--end portfolio-item-->
-                <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-                <!--end portfolio-item-->
-                <a class="sidebar-button" href="portfolio.html">All Projects &raquo;</a> </div>
+
+                {% for project in projects %}
+                    <div class="portfolio-item"> <a href="{{ path('akono_site_portfolio') }}/{{ project.id }}">
+                            <img width="280" height="190" src="images/{{ project.image }}" alt="{{ project.title }}" /></a>
+                    </div>
+                    <!--end portfolio-item-->
+                {% endfor %}
+
+                <a class="sidebar-button" href="{{ path('akono_site_portfolio') }}">All Projects &raquo;</a> </div>
             <!--end recent-projects-->
         </div>
         <!--end sidebar-->

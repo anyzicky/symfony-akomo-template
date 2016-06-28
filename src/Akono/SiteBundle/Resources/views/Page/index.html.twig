@@ -20,7 +20,7 @@
                 {% set j = 0 %}
                 {% for slide in slides %}
                     <li {% if(j % 3 == 0) %}class="first" {% endif %}>
-                        <a href="#"><img width="280" height="190" src="images/{{ slide.image }}" alt="{{ slide.title }}" /></a>
+                        <a href="{{ path('akono_site_portfolio') }}/{{ slide.id }}"><img width="280" height="190" src="images/{{ slide.image }}" alt="{{ slide.title }}" /></a>
                     </li>
                     {% set j = j + 1 %}
                 {% endfor %}

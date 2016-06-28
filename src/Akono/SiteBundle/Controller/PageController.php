@@ -2,7 +2,9 @@
 
 namespace Akono\SiteBundle\Controller;
 
+use Akono\SiteBundle\Form\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
 {
@@ -23,7 +25,17 @@ class PageController extends Controller
     
     public function servicesAction()
     {
-        return $this->render('AkonoSiteBundle:Page:services.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $services = $em->getRepository('AkonoSiteBundle:Service')
+                       ->findAll();
+
+        $projects = $em->getRepository('AkonoSiteBundle:Slider')->getProject(2);
+
+        return $this->render('AkonoSiteBundle:Page:services.html.twig', array(
+            'services' => $services,
+            'projects' => $projects
+        ));
     }
 
     public function portfolioAction()
@@ -42,8 +54,22 @@ class PageController extends Controller
         return $this->render('AkonoSiteBundle:Page:articles.html.twig');
     }
 
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('AkonoSiteBundle:Page:contact.html.twig');
+        $event = new \Akono\SiteBundle\Entity\Event();
+
+        $form = $this->createForm(Event::class, $event);
+
+        if($request->isMethod($request::METHOD_POST)) {
+            $form->handleRequest($request);
+
+            if($form->isValid()) {
+                return $this->redirectToRoute('akono_site_contact');
+            }
+        }
+
+        return $this->render('AkonoSiteBundle:Page:contact.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }

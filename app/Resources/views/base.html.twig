@@ -34,11 +34,11 @@
         <div id="nav">
             {% block navigation %}
                 <ul class="menu">
-                    <li class="current_page_item"><a href="{{ path('akono_site_homepage') }}">Home</a></li>
-                    <li><a href="{{ path('akono_site_services') }}">Services</a></li>
-                    <li><a href="{{ path('akono_site_portfolio') }}">Portfolio</a></li>
-                    <li><a href="{{ path('akono_site_articles') }}">Articles</a></li>
-                    <li><a href="{{ path('akono_site_contact') }}">Contact</a></li>
+                    <li {% if(app.request.attributes.get('_route') == 'akono_site_homepage') %}class="current_page_item"{% endif %}><a href="{{ path('akono_site_homepage') }}">Home</a></li>
+                    <li {% if(app.request.attributes.get('_route') == 'akono_site_services') %}class="current_page_item"{% endif %}><a href="{{ path('akono_site_services') }}">Services</a></li>
+                    <li {% if(app.request.attributes.get('_route') == 'akono_site_portfolio') %}class="current_page_item"{% endif %}><a href="{{ path('akono_site_portfolio') }}">Portfolio</a></li>
+                    <li {% if(app.request.attributes.get('_route') == 'akono_site_articles') %}class="current_page_item"{% endif %}><a href="{{ path('akono_site_articles') }}">Articles</a></li>
+                    <li {% if(app.request.attributes.get('_route') == 'akono_site_contact') %}class="current_page_item"{% endif %}><a href="{{ path('akono_site_contact') }}">Contact</a></li>
                 </ul>
             {% endblock %}
         </div>

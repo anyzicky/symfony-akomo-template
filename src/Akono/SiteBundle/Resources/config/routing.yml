@@ -22,4 +22,18 @@ akono_site_contact:
     path:     /contact
     defaults: { _controller: AkonoSiteBundle:Page:contact }
     requirements:
+      methods: GET|POST
+
+akono_site_service:
+    path: /services/{id}
+    defaults: { _controller: AkonoSiteBundle:Service:show}
+    requirements:
       methods: GET
+      id: \d+
+
+akono_site_portfolio_show:
+    path: /portfolio/{id}
+    defaults: { _controller: AkonoSiteBundle:Portfolio:show}
+    requirements:
+      methods: GET
+      id: \d+

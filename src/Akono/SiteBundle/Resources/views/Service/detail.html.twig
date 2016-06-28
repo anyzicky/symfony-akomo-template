@@ -1,0 +1,17 @@
+{% extends '@AkonoSite/layout.html.twig' %}
+
+{% block title %} {{ service.title }}{% endblock %}
+{% block body %}
+    <div class="page-headline">{{ service.title }}</div>
+    <div id="main">
+        <div id="project-content">
+            <div id="project-header">
+                <h3 class="title">{{ service.title }}</h3>
+            </div>
+            <!--end project-header-->
+            {{ service.body }}
+        <!--end project-content-->
+        <div id="project-image-large"> <img src="#" /> </div>
+        <!--end project-image-large-->
+    </div>
+{% endblock %}
