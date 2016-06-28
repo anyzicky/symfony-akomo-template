@@ -1,63 +1,47 @@
 {% extends 'AkonoSiteBundle::layout.html.twig' %}
 
+{% block title %}Articles{% endblock %}
+
 {% block body %}
     <div class="page-headline">Articles</div>
     <div id="main">
         <div id="content">
-            <div class="post" >
-                <h3 class="post-title"><a href="#">Top Tips For Hiring A Design Agency</a></h3>
-                <h3 class="post-meta">1st May 2011 / <a href="#">No Comments &#187;</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="more-link">Read Full Article &raquo;</a></p>
-            </div>
-            <!--end post-->
-            <div class="post-line"></div>
-            <div class="post" id="post-77">
-                <h3 class="post-title"><a href="#">The Future of HTML5</a></h3>
-                <h3 class="post-meta">17th April 2011 / <a href="#">No Comments &#187;</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="more-link">Read Full Article &raquo;</a></p>
-            </div>
-            <!--end post-->
-            <div class="post-line"></div>
-            <div class="post">
-                <h3 class="post-title"><a href="#">Are You Using CSS3 Yet?</a></h3>
-                <h3 class="post-meta">2nd April 2011 / <a href="#">No Comments &#187;</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="more-link">Read Full Article &raquo;</a></p>
-            </div>
-            <!--end post-->
-            <div class="post-line"></div>
-            <div class="post">
-                <h3 class="post-title"><a href="#">A Guide To Creating Mobile Apps</a></h3>
-                <h3 class="post-meta">28th March 2011 / <a href="#">No Comments &#187;</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="more-link">Read Full Article &raquo;</a></p>
-            </div>
-            <!--end post-->
-            <div class="post-line"></div>
-            <div class="post">
-                <h3 class="post-title"><a href="#">Should Designers Know How To Code?</a></h3>
-                <h3 class="post-meta">16th March 2011 / <a href="#">No Comments &#187;</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nibh mauris. Mauris interdum, dolor in vulputate tincidunt, mauris lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" class="more-link">Read Full Article &raquo;</a></p>
-            </div>
-            <!--end post-->
-            <div class="post-line"></div>
-            <ul class="post-navigation">
-                <li><a href="#">&laquo; Older Articles</a></li>
-            </ul>
+            {% for article in articles %}
+                <div class="post" >
+                    <h3 class="post-title"><a href="{{ path('akono_site_articles') }}/{{ article.id }}">{{ article.title }}</a></h3>
+                    <h3 class="post-meta">{{ article.postdate|date('d.m.Y') }} / <a href="#">No Comments &#187;</a></h3>
+                    <p>
+                        {{ article.body }}
+                        <a href="{{ path('akono_site_articles') }}/{{ article.id }}" class="more-link">Read Full Article &raquo;</a>
+                    </p>
+                </div>
+                <!--end post-->
+                <div class="post-line"></div>
+            {% endfor %}
+
+            {% if articles|length > 4 %}
+                <ul class="post-navigation">
+                    <li><a href="#">&laquo; Older Articles</a></li>
+                </ul>
+            {% endif %}
         </div>
         <!--end content-->
         <div id="sidebar">
             <div id="hire">
                 <h3 class="sidebar-title">Want To Hire Akona?</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a class="sidebar-button" href="contact.html">Contact Us &raquo;</a> </div>
+                <a class="sidebar-button" href="{{ path('akono_site_contact') }}">Contact Us &raquo;</a> </div>
             <!--end hire-->
             <div id="recent-projects">
                 <h3>Recent Projects</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-                <!--end portfolio-item-->
-                <div class="portfolio-item"> <a href="#"><img width="280" height="190" src="images/280x190.gif" alt="" /></a> </div>
-                <!--end portfolio-item-->
-                <a class="sidebar-button" href="portfolio.html">All Projects &raquo;</a> </div>
+                {% for project in projects %}
+                    <div class="portfolio-item"> <a href="{{ path('akono_site_portfolio') }}/{{ project.id }}">
+                            <img width="280" height="190" src="images/{{ project.image }}" alt="{{ project.title }}" /></a>
+                    </div>
+                    <!--end portfolio-item-->
+                {% endfor %}
+                <a class="sidebar-button" href="{{ path('akono_site_portfolio') }}">All Projects &raquo;</a> </div>
             <!--end recent-projects-->
         </div>
         <!--end sidebar-->

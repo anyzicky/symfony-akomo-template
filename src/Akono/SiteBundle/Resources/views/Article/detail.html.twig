@@ -1,0 +1,31 @@
+{% extends '@AkonoSite/layout.html.twig' %}
+
+{% block title %} {{ article.title }}{% endblock %}
+{% block body %}
+    <div class="page-headline">{{ article.title }}</div>
+    <div id="main">
+    <div id="project-content">
+        <div id="project-header">
+            <h3 class="title">{{ article.title }}</h3>
+            <h3 class="title">Author: <span>{{ article.author }}</span></h3>
+            <h3 class="title">Postdate: <span>{{ article.postdate|date('d.m.Y') }}</span></h3>
+            <h3 class="title">Tags: <span>{{ article.tags }}</span></h3>
+        </div>
+        <!--end project-header-->
+        {{ article.body }}
+        <!--end project-content-->
+
+        <br>
+        <br>
+        <hr>
+        <br><br>
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            <p>
+                <h5>Author: {{ comment.user }}</h5>
+                <h5>Created: {{ comment.created|date('d.m.Y H:i:s') }}</h5>
+                <h5>Comment: {{ comment.comment }}</h5>
+            </p>
+        {% endfor %}
+    </div>
+{% endblock %}

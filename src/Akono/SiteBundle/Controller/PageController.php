@@ -51,7 +51,16 @@ class PageController extends Controller
 
     public function articlesAction()
     {
-        return $this->render('AkonoSiteBundle:Page:articles.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->getRepository('AkonoSiteBundle:Article')->findAll();
+
+        $projects = $em->getRepository('AkonoSiteBundle:Slider')->getProject(2);
+        
+        return $this->render('AkonoSiteBundle:Page:articles.html.twig', array(
+            'projects' => $projects,
+            'articles' => $articles
+        ));
     }
 
     public function contactAction(Request $request)

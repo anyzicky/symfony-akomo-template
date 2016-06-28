@@ -37,3 +37,10 @@ akono_site_portfolio_show:
     requirements:
       methods: GET
       id: \d+
+
+akono_site_article_show:
+    path: /articles/{id}
+    defaults: { _controller: AkonoSiteBundle:Article:show}
+    requirements:
+      methods: GET
+      id: \d+
