@@ -7,3 +7,13 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    admin.blob:
+            class: Akono\SiteBundle\Admin\BlobAdmin
+            arguments: [~, Akono\SiteBundle\Entity\Blob, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Blob }
+    admin.service:
+                class: Akono\SiteBundle\Admin\ServiceAdmin
+                arguments: [~, Akono\SiteBundle\Entity\Service, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: Service }
